@@ -225,7 +225,7 @@ with contact:
 	# Function to create a team member card
 	def create_team_member_card(member):
     	# Load the image from a local file as a data URL
-		file_path = os.path.join(here, f"images\{member['name']}.jpeg")
+		file_path = os.path.join(here, f"images/{member['name']}.jpeg")
     	
 		with open(file_path, "rb") as file:
         		contents = file.read()
