@@ -6,20 +6,11 @@ import pickle
 import _pickle
 import base64
 from PIL import Image
-import xgboost
-#model_name = "autoscout_rf_model.pkl"
 import os
-#model_namee = "autoscout_rf_model.pkl"
+
 model_namee = "lr_fraud_model.pkl"
-#modell = xgboost.Booster(model_file = 'xg_pipe_model.pkl')
 here = os.path.dirname(os.path.abspath(__file__))
 model_name = os.path.join(here, model_namee)
-#def decompress_pickle(file):
-#	data = bz2.BZ2File(file, 'rb')
-#	data = _pickle.load(data)
-#	return data
-#model = decompress_pickle(model_name)
-#model = xgboost.Booster(model_file = model_name)
 model=pickle.load(open(model_name , "rb"))
 
 st.set_page_config(page_title='Fraud Detection', layout='wide')
@@ -47,13 +38,7 @@ with home:
 	st.write("This website will help you detect fradulant behaviour on credit card transactions.")
 	with st.container():
 		st.write("---")
-		#left_column_h, right_column_h = st.columns(2)
-		#with left_column_h:
-			#*You can leave some options as the defualt value but it will affect the accuracy of the price estimation.*
 		st.markdown(" ## What you need to do: ")
-			#st.markdown("- ### Go to the *Price Estimator* tab.")
-			#st.markdown("- ### Enter the requested information.")
-			#st.markdown("- ### Press the *Predict* button.")
 		st.write("""
 - ### Go to the *Detect Fraud* tab.
 - ### Fill the required information.
@@ -102,16 +87,7 @@ with detect_fraud:
 			v14 = st.number_input("Insert V14 value", min_value=0.0)
 			st.write("##")
 			v17 = st.number_input("Insert V17 value", min_value=1.0)
-			#st.write("##")
-			#empty_w = st.number_input("Insert your car's empty weight in Kg", min_value=0.0)
-			#st.write("##")
-			#pre_owner = st.number_input("How many previous owners did your car have?", min_value=1.0)
-			#st.write("##")
-			#age = st.number_input("Insert your car's age", min_value=0.0)
-			#power = st.number_input("Insert your car's power in kilowatt?", min_value=0.0)
-			#st.write("##")
-			#cons_avg = st.number_input("Choose your car's consumption average?", min_value=0.0)
-			#st.write("##")
+		
 			obs = {'V7':v7, 'V10':v10, 'V12':v12, 'V14':v14, 'V17':v17}
 			observation = pd.DataFrame([obs])
 	with st.container():
@@ -250,7 +226,7 @@ with contact:
 	def create_team_member_card(member):
     	# Load the image from a local file as a data URL
 		file_path = os.path.join(here, f"images\{member['name']}.jpeg")
-    	#file_path = folder_path+f"C:\\Users\\Administrator\\Desktop\\streamlit\\capstone\\pages\\images\\{member['name']}.jpeg"  # Replace with the path to your image
+    	
 		with open(file_path, "rb") as file:
         		contents = file.read()
         		data_url = base64.b64encode(contents).decode("utf-8")
@@ -270,4 +246,3 @@ with contact:
         		with cols[j]:
             			if i+j < len(team_members):
                 			create_team_member_card(team_members[i+j])
-#streamlit run C:\Users\fai-w\Desktop\fraudStreamlit\fraudStreamlit.py
