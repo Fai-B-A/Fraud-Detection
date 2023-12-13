@@ -78,15 +78,15 @@ with detect_fraud:
 		with left_column:
 			st.markdown("### Only authorized employees know the meaning behind V values")
 			st.write("---")
-			v7 = st.number_input("Insert V7 value", min_value=0.0)
+			v7 = st.number_input("Insert V7 value", min_value=-50.0)
 			st.write("##")
-			v10 = st.number_input("Insert V10 value", min_value=0.0)
+			v10 = st.number_input("Insert V10 value", min_value=-50.0)
 			st.write("##")
-			v12 = st.number_input("Insert V12 value", min_value=1.0)
+			v12 = st.number_input("Insert V12 value", min_value=-50.0)
 			st.write("##")
-			v14 = st.number_input("Insert V14 value", min_value=0.0)
+			v14 = st.number_input("Insert V14 value", min_value=-50.0)
 			st.write("##")
-			v17 = st.number_input("Insert V17 value", min_value=1.0)
+			v17 = st.number_input("Insert V17 value", min_value=-50.0)
 		
 			obs = {'V7':v7, 'V10':v10, 'V12':v12, 'V14':v14, 'V17':v17}
 			observation = pd.DataFrame([obs])
